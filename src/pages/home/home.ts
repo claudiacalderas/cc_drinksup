@@ -1,17 +1,25 @@
+import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { AngularFireDatabase } from 'angularfire2/database';
-import { Databaseservice } from '../../providers/databaseservice'; 
-import { FireabaseListObservable } from "angularfire2";
-
+import { Observable } from 'rxjs/Observable';
+ 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  accounts:FirebaseListObservable<any[]>
-  constructor(public navCtrl: NavController, public db: Databaseservice) {
-      this.accounts = this.db.listAccounts();
+  shoppingItems: Observable<any[]>;
+  newItem = '';
+ 
+  constructor(public navCtrl: NavController, public firebaseProvider: FirebaseProvider) {
+    this.shoppingItems = this.firebaseProvider.getShoppingItems();
   }
-
+ 
+  addItem() {
+    this.firebaseProvider.addItem(this.newItem);
+  }
+ 
+  removeItem(id) {
+    this.firebaseProvider.removeItem(id);
+  }
 }
