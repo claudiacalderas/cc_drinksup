@@ -1,6 +1,8 @@
 {
   "name": "cc_drinksup",
   "app_id": "",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }

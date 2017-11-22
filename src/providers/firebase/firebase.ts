@@ -5,19 +5,20 @@ import { AngularFireDatabase } from 'angularfire2/database';
 export class FirebaseProvider {
  
   constructor(public afd: AngularFireDatabase) { 
-      this.shoppingItems = afd.list('shoppingItems').valueChanges();
   }
  
   getShoppingItems() {
-    console.log(this.afd.list('shoppingItems').valueChanges());
-    return this.afd.list('shoppingItems').valueChanges();
+    return this.afd.list('/shoppingItems/').valueChanges();
   }
  
   addItem(name) {
-    this.afd.list('/shoppingItems').push(name);
+    let dataObject = {};
+    dataObject.name = name;
+    this.afd.list('/shoppingItems/').push(dataObject);
   }
  
   removeItem(id) {
-    this.afd.list('/shoppingItems').remove(id);
+    console.log('id',id);
+    this.afd.list('/shoppingItems/').remove(id);
   }
 }
