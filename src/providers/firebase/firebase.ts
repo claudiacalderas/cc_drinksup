@@ -12,7 +12,9 @@ export class FirebaseProvider {
   }
  
   addItem(name) {
-    let dataObject = {};
+    let dataObject = {
+        name: String
+    };
     dataObject.name = name;
     this.afd.list('/shoppingItems/').push(dataObject);
   }

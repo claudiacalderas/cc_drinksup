@@ -11,6 +11,7 @@ import { HomePage } from '../pages/home/home';
 import { HttpModule } from '@angular/http';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
+import { firebase } from 'firebase';
 import { FirebaseProvider } from './../providers/firebase/firebase';
 
 const firebaseConfig = {
